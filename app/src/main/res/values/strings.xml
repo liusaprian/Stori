@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Stori</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="new_here">New here?</string>
+    <string name="register">Register</string>
+    <string name="joined_us_before">Joined us before?</string>
+</resources>
