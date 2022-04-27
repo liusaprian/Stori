@@ -1,4 +1,4 @@
-package app.liusaprian.stori.ui
+package app.liusaprian.stori.ui.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.widget.Toast
 import app.liusaprian.stori.data.SessionManager
 import app.liusaprian.stori.data.StoriRepository
 import app.liusaprian.stori.databinding.ActivityLoginBinding
+import app.liusaprian.stori.ui.home.HomeActivity
 import app.liusaprian.stori.viewmodel.AuthViewModel
 
 class LoginActivity : AppCompatActivity() {

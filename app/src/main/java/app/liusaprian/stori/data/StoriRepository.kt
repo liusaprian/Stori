@@ -1,7 +1,7 @@
 package app.liusaprian.stori.data
 
 import app.liusaprian.stori.network.ApiConfig
-import app.liusaprian.stori.ui.HomeActivity
+import app.liusaprian.stori.network.response.Story
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -21,6 +21,11 @@ class StoriRepository(private val session: SessionManager) {
                     ?: StoriRepository(session)
             }
 
+        const val TOKEN = "token"
+        const val USER_ID = "user_id"
+        const val NAME = "name"
+        const val EMAIL = "email"
+        const val PASSWORD = "password"
     }
 
     suspend fun loginUser(email: String, password: String) : Boolean {
@@ -34,11 +39,11 @@ class StoriRepository(private val session: SessionManager) {
                 if(!auth.error!!) {
                     session.createLoginSession()
                     with(session) {
-                        saveToPreference("email", email)
-                        saveToPreference("password", password)
-                        saveToPreference("name", auth.loginResult?.name!!)
-                        saveToPreference("userId", auth.loginResult.userId!!)
-                        saveToPreference("token", auth.loginResult.token!!)
+                        saveToPreference(EMAIL, email)
+                        saveToPreference(PASSWORD, password)
+                        saveToPreference(NAME, auth.loginResult?.name!!)
+                        saveToPreference(USER_ID, auth.loginResult.userId!!)
+                        saveToPreference(TOKEN, auth.loginResult.token!!)
                     }
                 }
                 true
@@ -60,6 +65,12 @@ class StoriRepository(private val session: SessionManager) {
         } catch (e: Exception) {
             false
         }
+    }
+
+    suspend fun getStories() : List<Story> {
+        val headerMap = mutableMapOf<String, String>()
+        headerMap["Authorization"] = "Bearer ${getFromPreference(TOKEN)}"
+        return service.getStories(headerMap).listStory
     }
 
     var isLogin = session.isLogin

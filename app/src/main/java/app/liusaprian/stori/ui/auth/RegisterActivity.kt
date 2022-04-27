@@ -1,4 +1,4 @@
-package app.liusaprian.stori.ui
+package app.liusaprian.stori.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

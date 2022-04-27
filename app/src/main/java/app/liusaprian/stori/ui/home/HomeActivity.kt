@@ -1,18 +1,21 @@
-package app.liusaprian.stori.ui
+package app.liusaprian.stori.ui.home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.viewbinding.library.activity.viewBinding
+import androidx.recyclerview.widget.LinearLayoutManager
 import app.liusaprian.stori.data.SessionManager
 import app.liusaprian.stori.data.StoriRepository
 import app.liusaprian.stori.databinding.ActivityHomeBinding
+import app.liusaprian.stori.ui.auth.LoginActivity
 import app.liusaprian.stori.viewmodel.AuthViewModel
+import app.liusaprian.stori.viewmodel.StoryViewModel
 
 class HomeActivity : AppCompatActivity() {
 
     companion object {
-        const val JUST_LOGGED_OUT = "jlo"
+        const val JUST_LOGGED_OUT = "just_logged_out"
     }
 
     private val authViewModel by lazy {
@@ -22,11 +25,24 @@ class HomeActivity : AppCompatActivity() {
             )
         )
     }
+
+    private val storyViewModel by lazy {
+        StoryViewModel(
+            StoriRepository.getInstance(
+                SessionManager(this)
+            )
+        )
+    }
     private val binding: ActivityHomeBinding by viewBinding()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        storyViewModel.getStories()
+
+        val storyAdapter = StoryAdapter()
+
+        storyViewModel.stories.observe(this) { storyAdapter.setData(it) }
 
         with(binding) {
             logoutBtn.setOnClickListener {
@@ -37,6 +53,8 @@ class HomeActivity : AppCompatActivity() {
                 startActivity(toLogin)
                 finish()
             }
+            storyRv.adapter = storyAdapter
+            storyRv.layoutManager = LinearLayoutManager(this@HomeActivity)
         }
     }
 }
