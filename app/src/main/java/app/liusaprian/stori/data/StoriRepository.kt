@@ -1,7 +1,7 @@
 package app.liusaprian.stori.data
 
-import android.util.Log
 import app.liusaprian.stori.network.ApiConfig
+import app.liusaprian.stori.ui.HomeActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -41,24 +41,24 @@ class StoriRepository(private val session: SessionManager) {
                         saveToPreference("token", auth.loginResult.token!!)
                     }
                 }
-                !auth.error
+                true
             } catch (e: Exception) {
                 false
             }
         }
     }
 
-    suspend fun registerUser(name: String, email: String, password: String) : String {
+    suspend fun registerUser(name: String, email: String, password: String) : Boolean {
         val jsonObject = JSONObject()
         jsonObject.put("name", name)
         jsonObject.put("email", email)
         jsonObject.put("password", password)
         val requestBody = jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
         return try {
-            val response = service.register(requestBody)
-            response.message!!
+            service.register(requestBody)
+            true
         } catch (e: Exception) {
-            "Email is already taken"
+            false
         }
     }
 
@@ -67,4 +67,6 @@ class StoriRepository(private val session: SessionManager) {
     fun logoutUser() = session.logout()
 
     fun getFromPreference(key: String) = session.getFromPreference(key)
+
+    fun saveToPreference(key: String, value: String) = session.saveToPreference(key, value)
 }

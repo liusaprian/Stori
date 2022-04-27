@@ -24,16 +24,16 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        authViewModel.isRegister.observe(this@RegisterActivity) {
+            if(it) {
+                Toast.makeText(this@RegisterActivity, "User Created", Toast.LENGTH_SHORT).show()
+                finish()
+            } else Toast.makeText(this@RegisterActivity, "Email is already taken", Toast.LENGTH_SHORT).show()
+        }
         with(binding) {
             registerBtn.setOnClickListener {
                 if(nameEt.text.isNotEmpty() && emailEt.text!!.isNotEmpty() && passEt.text!!.isNotEmpty() && emailEt.error == null && passEt.error == null) {
                     authViewModel.register(nameEt.text.toString(), emailEt.text.toString(), passEt.text.toString())
-                    authViewModel.isRegister.observe(this@RegisterActivity) {
-                        Toast.makeText(this@RegisterActivity, it, Toast.LENGTH_SHORT).show()
-                        if(it == "User Created") {
-                            finish()
-                        }
-                    }
                 } else Toast.makeText(this@RegisterActivity, "Fields must not be empty or have errors", Toast.LENGTH_SHORT).show()
             }
         }

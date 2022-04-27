@@ -9,8 +9,8 @@ import kotlinx.coroutines.launch
 
 class AuthViewModel(private val repository: StoriRepository) : ViewModel() {
 
-    private val _isRegister = MutableLiveData<String>()
-    val isRegister: LiveData<String> = _isRegister
+    private val _isRegister = MutableLiveData<Boolean>()
+    val isRegister: LiveData<Boolean> = _isRegister
 
     private val _isLogin = MutableLiveData(repository.isLogin)
     val isLogin: LiveData<Boolean> = _isLogin
@@ -25,8 +25,10 @@ class AuthViewModel(private val repository: StoriRepository) : ViewModel() {
 
     fun logout() = viewModelScope.launch {
         repository.logoutUser()
-        justLoggedOut = true
+
     }
 
-    var justLoggedOut = false
+    fun getPreference(key: String) = repository.getFromPreference(key)
+
+    fun saveToPreference(key: String, value: String) = repository.saveToPreference(key, value)
 }

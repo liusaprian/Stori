@@ -3,7 +3,6 @@ package app.liusaprian.stori.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.viewbinding.library.activity.viewBinding
 import android.widget.Toast
 import app.liusaprian.stori.data.SessionManager
@@ -26,10 +25,8 @@ class LoginActivity : AppCompatActivity() {
         authViewModel.isLogin.observe(this) {
             if (it) goingHome()
             else {
-                Log.d("asdasd", authViewModel.justLoggedOut.toString())
-                if(!authViewModel.justLoggedOut) {
+                if(authViewModel.getPreference(HomeActivity.JUST_LOGGED_OUT) != "true") {
                     Toast.makeText(this, "Invalid credential", Toast.LENGTH_SHORT).show()
-                    authViewModel.justLoggedOut = false
                 }
             }
         }
@@ -43,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
             }
             loginBtn.setOnClickListener {
                 if (emailEt.error == null && passEt.error == null && emailEt.text!!.isNotEmpty() && passEt.text!!.isNotEmpty()) {
+                    authViewModel.saveToPreference(HomeActivity.JUST_LOGGED_OUT, "false")
                     authViewModel.login(emailEt.text.toString(), passEt.text.toString())
                 } else Toast.makeText(
                         this@LoginActivity,
