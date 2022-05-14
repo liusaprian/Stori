@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.util.PatternsCompat
+import app.liusaprian.stori.R
 
 class EmailEditText : AppCompatEditText {
 
@@ -26,7 +27,7 @@ class EmailEditText : AppCompatEditText {
                 // Do nothing.
             }
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                error = if (!isValidEmail(s)) "Email format is incorrect" else null
+                error = if (!isValidEmail(s)) resources.getString(R.string.incorrect_email_format) else null
             }
             override fun afterTextChanged(s: Editable) {
                 // Do nothing.

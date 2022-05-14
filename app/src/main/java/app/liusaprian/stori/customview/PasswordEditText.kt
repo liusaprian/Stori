@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
+import app.liusaprian.stori.R
 
 class PasswordEditText : AppCompatEditText {
 
@@ -25,7 +26,7 @@ class PasswordEditText : AppCompatEditText {
                 // Do nothing.
             }
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                error = if (s.toString().length < 6) "Password must not be less than 6 characters!" else null
+                error = if (s.toString().length < 6) resources.getString(R.string.incorrect_pass_format) else null
             }
             override fun afterTextChanged(s: Editable) {
                 // Do nothing.

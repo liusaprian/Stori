@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Stori</string>
+    <string name="login">Masuk</string>
+    <string name="email">Email</string>
+    <string name="password">Kata sandi</string>
+    <string name="sign_up">Daftar</string>
+    <string name="name">Nama</string>
+    <string name="new_here">Baru disini?</string>
+    <string name="register">Daftar</string>
+    <string name="joined_us_before">Sudah bergabung?</string>
+    <string name="stories">Daftar Story</string>
+    <string name="image_foreground">Layar depan gambar</string>
+    <string name="logout_button">Tombol logout</string>
+    <string name="email_icon">Icon email</string>
+    <string name="password_icon">Icon password</string>
+    <string name="name_icon">Icon name</string>
+    <string name="login_button">Tombol login</string>
+    <string name="go_to_register_button">Tombol pergi daftar</string>
+    <string name="register_button">Tombol daftar</string>
+    <string name="go_to_login_button">Tombol pergi masuk</string>
+    <string name="add_story_button">Tombol tambah story</string>
+    <string name="empty_story">Story kosong</string>
+    <string name="add_story">Tambah Story</string>
+    <string name="go_to_add_story">Pergi tambah story</string>
+    <string name="gallery">Galeri</string>
+    <string name="camera">Kamera</string>
+    <string name="write_description_for_this_image">Tulis deskripsi untuk gambar ini</string>
+    <string name="add_widget">Tambah widget</string>
+    <string name="app_widget_description">Daftar Story</string>
+    <string name="location_content_description">Lokasi untuk story %s</string>
+    <string name="invalid_credential">Kredensial salah</string>
+    <string name="auth_error_msg">Field tidak boleh kosong atau error</string>
+    <string name="user_created">User berhasil dibuat</string>
+    <string name="email_taken">Email sudah digunakan orang lain</string>
+    <string name="camera_fail">Gagal menampilkan kamera</string>
+    <string name="capture_fail">Gagal menangkap gambar</string>
+    <string name="incorrect_email_format">Format email salah</string>
+    <string name="incorrect_pass_format">Password tidak boleh kurang dari 6 karakter</string>
+    <string name="story_name">Story %s</string>
+</resources>

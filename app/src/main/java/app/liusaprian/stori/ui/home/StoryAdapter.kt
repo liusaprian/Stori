@@ -1,10 +1,15 @@
 package app.liusaprian.stori.ui.home
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView
 import app.liusaprian.stori.databinding.StoryItemBinding
 import app.liusaprian.stori.network.response.Story
+import app.liusaprian.stori.ui.detail.DetailActivity
 import com.bumptech.glide.Glide
 
 class StoryAdapter : RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
@@ -15,6 +20,7 @@ class StoryAdapter : RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
         if (newListData == null) return
         listData.clear()
         listData.addAll(newListData)
+        notifyDataSetChanged()
     }
 
     inner class StoryViewHolder(private val binding: StoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -23,7 +29,21 @@ class StoryAdapter : RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
                 Glide.with(itemView.context)
                     .load(data.photoUrl)
                     .into(photoIv)
+                photoIv.contentDescription = data.name + " photo"
                 nameTv.text = data.name
+                itemView.setOnClickListener {
+                    val toDetail = Intent(itemView.context, DetailActivity::class.java)
+                    toDetail.putExtra(DetailActivity.STORY_DETAIL, data)
+
+                    val optionsCompat: ActivityOptionsCompat =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(
+                            itemView.context as Activity,
+                            Pair(photoIv, "photo"),
+                            Pair(nameTv, "name")
+                        )
+
+                    itemView.context.startActivity(toDetail, optionsCompat.toBundle())
+                }
             }
         }
     }

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Stori</string>
-    <string name="welcome_back">Welcome Back</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -10,4 +9,32 @@
     <string name="register">Register</string>
     <string name="joined_us_before">Joined us before?</string>
     <string name="stories">Stories</string>
+    <string name="image_foreground">Image foreground</string>
+    <string name="logout_button">Logout button</string>
+    <string name="email_icon">Email icon</string>
+    <string name="password_icon">Password icon</string>
+    <string name="name_icon">Name icon</string>
+    <string name="login_button">Login button</string>
+    <string name="go_to_register_button">Go to register button</string>
+    <string name="register_button">Register button</string>
+    <string name="go_to_login_button">Go to login button</string>
+    <string name="add_story_button">Add story button</string>
+    <string name="empty_story">Empty story</string>
+    <string name="add_story">Add Story</string>
+    <string name="go_to_add_story">Go to add story</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="write_description_for_this_image">Write description for this image</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">Stories</string>
+    <string name="location_content_description">Location for %s\'s story</string>
+    <string name="invalid_credential">Invalid credential</string>
+    <string name="auth_error_msg">Fields must not be empty or have errors</string>
+    <string name="user_created">User Created</string>
+    <string name="email_taken">Email is already taken</string>
+    <string name="camera_fail">Failed to show camera</string>
+    <string name="capture_fail">Image capturing failed</string>
+    <string name="incorrect_email_format">Email format is incorrect</string>
+    <string name="incorrect_pass_format">Password must not be less than 6 characters!</string>
+    <string name="story_name">%s\'s story</string>
 </resources>

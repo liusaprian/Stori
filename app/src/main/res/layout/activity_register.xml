@@ -35,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:contentDescription="@string/name_icon"
         android:src="@drawable/ic_baseline_person_24"
         app:layout_constraintStart_toStartOf="@+id/register_text"
         app:layout_constraintTop_toBottomOf="@+id/register_text" />
@@ -56,6 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:contentDescription="@string/email_icon"
         android:src="@drawable/ic_baseline_alternate_email_24"
         app:layout_constraintStart_toStartOf="@+id/name_image"
         app:layout_constraintTop_toBottomOf="@+id/name_image" />
@@ -77,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:contentDescription="@string/password_icon"
         android:src="@drawable/ic_baseline_lock_24"
         app:layout_constraintStart_toStartOf="@+id/email_image"
         app:layout_constraintTop_toBottomOf="@+id/email_image" />
@@ -103,6 +106,7 @@
         android:padding="12dp"
         android:textAllCaps="false"
         app:cornerRadius="20dp"
+        android:contentDescription="@string/register_button"
         app:layout_constraintBottom_toTopOf="@+id/login_tv"
         android:layout_marginBottom="16dp" />
 
@@ -121,6 +125,7 @@
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:textColor="@color/purple_blue"
+        android:contentDescription="@string/go_to_login_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline_register" />
 
@@ -132,5 +137,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_percent="0.62"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/purple_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

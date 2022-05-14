@@ -1,16 +1,15 @@
 package app.liusaprian.stori.network
 
 import app.liusaprian.stori.network.response.AuthResponse
+import app.liusaprian.stori.network.response.FileUploadResponse
 import app.liusaprian.stori.network.response.StoryResponse
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.HeaderMap
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
     @POST("login")
@@ -25,8 +24,17 @@ interface ApiService {
 
     @GET("stories")
     suspend fun getStories(
-        @HeaderMap headers: Map<String, String>
+        @HeaderMap headers: Map<String, String>,
+        @Query("location") location: Int = 1
     ) : StoryResponse
+
+    @Multipart
+    @POST("stories")
+    suspend fun addStory(
+        @HeaderMap headers: Map<String, String>,
+        @Part file: MultipartBody.Part,
+        @Part("description") description: RequestBody,
+    ): FileUploadResponse
 }
 
 class ApiConfig {
